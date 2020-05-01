@@ -1,9 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="style.css">
 	<title>Etch-A-Sketch</title>
 </head>
 <body>
+
+	<div class='button-container'>
+    <button class='new-sketch'>New Sketch Pad</button>
+    <button class='clear-grid'>Clear Canvas</button>
+	</div>
+	<div id='canvas'></div>
+
+
+
+<script type="text/javascript">
+// dom elements
+const canvas = document.getElementById('canvas');
+const newSketch = document.querySelector('.new-sketch');
+const clearGrid = document.querySelector('.clear-grid');
+let grids;
+
+// event listeners
+newSketch.addEventListener('click', newGrid);
+clearGrid.addEventListener('click', resetGrid);
+
+window.onload = createGrid(30);
+
+// create grid
+function createGrid(x) {
+  for (var rows = 0; rows < x; rows++) {
+    for (var cols = 0; cols < x; cols++) {
+      const gridCell = document.createElement('div');
+      gridCell.classList.add('cell')
+      let cellSize = 600 / x;
+      gridCell.style.width = cellSize + 'px';
+      gridCell.style.height = cellSize + 'px';
+      canvas.appendChild(gridCell);
+    }
+  }
+  grids = document.querySelectorAll('#canvas div');
+  grids.forEach(grid => grid.addEventListener('mouseover', changeColor));
+}
+
+// reset grid
+function resetGrid() {
+  while (canvas.hasChildNodes()) {
+    canvas.removeChild(canvas.firstChild);
+  }
+}
+
+// new grid
+function newGrid() {
+  var z = prompt('How many squares per side?');
+  resetGrid();
+  createGrid(z);
+}
+
+// change color on hover
+function changeColor(e) {
+  e.target.style.backgroundColor = "black";
+}
+
+</script>
 
 </body>
 </html>

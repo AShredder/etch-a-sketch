@@ -1,0 +1,23 @@
+#canvas {
+  position: relative;
+  outline: 2px solid #000;
+  margin: 40px auto;
+  height: 600px;
+  width: 600px;
+  padding: 0;
+  border: none;
+  font-size: 0;
+}
+
+.cell {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: 1px solid #000;
+  display: inline-block;
+}
+
+.button-container {
+  text-align: center;
+  margin: 30px;
+}
